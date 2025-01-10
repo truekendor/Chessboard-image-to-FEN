@@ -134,26 +134,48 @@
   color: white;
 }
 
-/* todo change styles */
-.detection-card .fen-container {
+.fen-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr min-content;
 
-  row-gap: 2px;
+  gap: 5px;
 }
 
-.fen-container input {
-  font-weight: 600;
-  background-color: #131313;
+label.fen-output-wrapper {
+  display: flex;
+  flex-direction: column;
+
   color: #f0f0f0;
+  gap: 3px;
+
+  border-radius: 3px;
+
+  padding-block: 3px;
+}
+
+.fen-output-wrapper p {
+  font-size: 0.9rem;
+  padding-inline: 4px;
+}
+
+.fen-output-wrapper .input-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.input-wrapper input {
+  font-weight: 600;
+  background-color: #222222;
+  color: inherit;
+
+  flex: 1;
 
   padding-inline: 4px;
 
   border: none;
 }
 
-.fen-container button {
+.input-wrapper button.copy-fen-btn {
   background-color: #f3f3f3;
   color: #000000;
 
