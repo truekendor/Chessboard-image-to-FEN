@@ -159,6 +159,8 @@ label.fen-output-wrapper {
 }
 
 .fen-output-wrapper .input-wrapper {
+  --_border_radius: 3px;
+
   display: flex;
   flex: 1;
 }
@@ -173,13 +175,27 @@ label.fen-output-wrapper {
   padding-inline: 4px;
 
   border: none;
+
+  border-top-left-radius: var(--_border_radius);
+  border-bottom-left-radius: var(--_border_radius);
 }
 
 .input-wrapper button.copy-fen-btn {
-  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #858585;
+
+  min-width: 1.4rem;
+  aspect-ratio: 9 / 8;
+
   color: #000000;
 
   font-weight: bold;
+
+  border-top-right-radius: var(--_border_radius);
+  border-bottom-right-radius: var(--_border_radius);
 
   outline: transparent;
   border: transparent;

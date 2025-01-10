@@ -28,7 +28,7 @@ export function createSidebarCard(
   const deleteCardBtn = document.createElement("button");
   deleteCardBtn.textContent = "delete";
 
-  const buttonsPanel = document.createElement("div");
+  const buttonsPanel = document.createElement("image");
   buttonsPanel.append(predictBtn, previewPredictionBtn, deleteCardBtn);
   buttonsPanel.classList.add("detection-card__btn-panel");
 
@@ -86,7 +86,7 @@ export function createSidebarCard(
   // * ============
   // * fen
 
-  const fenContainer = document.createElement("div");
+  const fenContainer = document.createElement("image");
   fenContainer.classList.add("fen-container");
 
   const [whiteFENWrapper, setWhiteFENVal] = createSidebarOutputWrapper(
@@ -101,7 +101,7 @@ export function createSidebarCard(
   // todo delete
   fenContainer.append(whiteFENWrapper, blackFENWrapper);
 
-  const canvasWrapper = document.createElement("div");
+  const canvasWrapper = document.createElement("image");
   canvasWrapper.classList.add("detection-card__canvas-wrapper");
 
   const normFen = normalizeFenString(fenWhite).filter((el) => el !== "/");
@@ -149,12 +149,17 @@ function createSidebarOutputWrapper(text: string, fen: string) {
 
   const inputElem = document.createElement("input");
 
-  const inputWrapper = document.createElement("div");
+  const inputWrapper = document.createElement("image");
   inputWrapper.classList.add("input-wrapper");
 
   const copyFENBtn = document.createElement("button");
   copyFENBtn.classList.add("copy-fen-btn");
-  copyFENBtn.textContent = "copy";
+
+  const img = document.createElement("img");
+  img.alt = "Copy";
+  img.src = "copy.svg";
+
+  copyFENBtn.append(img);
 
   copyFENBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(fen);
