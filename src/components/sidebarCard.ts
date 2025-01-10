@@ -39,8 +39,8 @@ export function createSidebarCard(
       detectionCanvas.toGrayScale().canvas
     );
 
-    fenWElement.value = f1;
-    fenBElement.value = f2;
+    setWhiteFENVal(f1);
+    setBlackFENVal(f2);
 
     const helperCanvas = new ChessBoardCanvas(
       detectionCanvas.width,
@@ -89,34 +89,20 @@ export function createSidebarCard(
   const fenContainer = document.createElement("div");
   fenContainer.classList.add("fen-container");
 
-  const fenWElement = document.createElement("input");
-  const fenBElement = document.createElement("input");
+  const [whiteFENWrapper, setWhiteFENVal] = createSidebarOutputWrapper(
+    "White's perspective",
+    fenWhite
+  );
+  const [blackFENWrapper, setBlackFENVal] = createSidebarOutputWrapper(
+    "Black's perspective",
+    fenBlack
+  );
 
-  const copyFENBtnW = document.createElement("button");
-  const copyFENBtnB = document.createElement("button");
-
-  copyFENBtnW.addEventListener("click", () => {
-    navigator.clipboard.writeText(fenWhite);
-  });
-
-  copyFENBtnB.addEventListener("click", () => {
-    navigator.clipboard.writeText(fenBlack);
-  });
-
-  copyFENBtnW.textContent = "copy";
-  copyFENBtnB.textContent = "copy";
-
-  fenWElement.value = fenWhite;
-  fenBElement.value = fenBlack;
-
-  fenWElement.disabled = true;
-  fenBElement.disabled = true;
-  fenContainer.append(fenWElement, copyFENBtnW, fenBElement, copyFENBtnB);
+  // todo delete
+  fenContainer.append(whiteFENWrapper, blackFENWrapper);
 
   const canvasWrapper = document.createElement("div");
   canvasWrapper.classList.add("detection-card__canvas-wrapper");
-
-  // ! dev ----------
 
   const normFen = normalizeFenString(fenWhite).filter((el) => el !== "/");
   const helperCanvas = new ChessBoardCanvas(
@@ -155,4 +141,38 @@ export function createSidebarCard(
       Sidebar.addCard(cardWrapper);
     },
   } as const;
+}
+
+function createSidebarOutputWrapper(text: string, fen: string) {
+  const wrapper = document.createElement("label");
+  wrapper.classList.add("fen-output-wrapper");
+
+  const inputElem = document.createElement("input");
+
+  const inputWrapper = document.createElement("div");
+  inputWrapper.classList.add("input-wrapper");
+
+  const copyFENBtn = document.createElement("button");
+  copyFENBtn.classList.add("copy-fen-btn");
+  copyFENBtn.textContent = "copy";
+
+  copyFENBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(fen);
+  });
+
+  const textElem = document.createElement("p");
+  textElem.textContent = text;
+
+  inputElem.disabled = true;
+  inputElem.value = fen;
+
+  inputWrapper.append(inputElem, copyFENBtn);
+
+  wrapper.append(textElem, inputWrapper);
+
+  function setVal(value: string) {
+    inputElem.value = value;
+  }
+
+  return [wrapper, setVal] as const;
 }
