@@ -1,7 +1,7 @@
 import { DetectionCanvas } from "./detectionCanvas";
 
 export class Sidebar {
-  private static sidebar: HTMLDivElement =
+  private static sidebarElement: HTMLDivElement =
     document.querySelector(".detection-sidebar")!;
 
   private static sidebarExpandBtn: HTMLButtonElement = document.querySelector(
@@ -9,46 +9,43 @@ export class Sidebar {
   )!;
 
   static expand() {
-    this.sidebar.classList.remove("shrink");
+    this.sidebarElement.classList.remove("shrink");
   }
 
   static shrink() {
-    this.sidebar.classList.add("shrink");
+    this.sidebarElement.classList.add("shrink");
   }
 
   static getPredictionCards() {
-    const cards = Sidebar.sidebar.querySelectorAll(".detection-card");
+    const cards = Sidebar.sidebarElement.querySelectorAll(".detection-card");
 
     return cards;
   }
 
-  static get _sidebar() {
-    return this.sidebar;
+  static get sidebar() {
+    return this.sidebarElement;
   }
 
   static removeCard(card: Element) {
-    this.sidebar.removeChild(card);
+    this.sidebarElement.removeChild(card);
   }
 
   static addCard(card: HTMLDivElement) {
-    this.sidebar.append(card);
+    this.sidebarElement.append(card);
   }
 
   static removePredictions(detectionCanvasList: DetectionCanvas[]) {
     detectionCanvasList.length = 0;
 
-    const cards = this.sidebar.querySelectorAll(".detection-card");
+    const cards = this.sidebarElement.querySelectorAll(".detection-card");
     cards.forEach((card) => {
-      this.sidebar.removeChild(card);
+      this.sidebarElement.removeChild(card);
     });
   }
 
   private static _ = (() => {
-    // use "unused variable" to prevent build errors
-    this._;
-
     this.sidebarExpandBtn.addEventListener("click", () => {
-      this.sidebar.classList.toggle("shrink");
+      this.sidebarElement.classList.toggle("shrink");
     });
   })();
 }

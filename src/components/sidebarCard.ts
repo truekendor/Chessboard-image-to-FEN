@@ -39,8 +39,8 @@ export function createSidebarCard(
       detectionCanvas.toGrayScale().canvas
     );
 
-    fenW.value = f1;
-    fenB.value = f2;
+    fenWElement.value = f1;
+    fenBElement.value = f2;
 
     const helperCanvas = new ChessBoardCanvas(
       detectionCanvas.width,
@@ -89,8 +89,8 @@ export function createSidebarCard(
   const fenContainer = document.createElement("div");
   fenContainer.classList.add("fen-container");
 
-  const fenW = document.createElement("input");
-  const fenB = document.createElement("input");
+  const fenWElement = document.createElement("input");
+  const fenBElement = document.createElement("input");
 
   const copyFENBtnW = document.createElement("button");
   const copyFENBtnB = document.createElement("button");
@@ -106,12 +106,12 @@ export function createSidebarCard(
   copyFENBtnW.textContent = "copy";
   copyFENBtnB.textContent = "copy";
 
-  fenW.value = fenWhite;
-  fenB.value = fenBlack;
+  fenWElement.value = fenWhite;
+  fenBElement.value = fenBlack;
 
-  fenW.disabled = true;
-  fenB.disabled = true;
-  fenContainer.append(fenW, copyFENBtnW, fenB, copyFENBtnB);
+  fenWElement.disabled = true;
+  fenBElement.disabled = true;
+  fenContainer.append(fenWElement, copyFENBtnW, fenBElement, copyFENBtnB);
 
   const canvasWrapper = document.createElement("div");
   canvasWrapper.classList.add("detection-card__canvas-wrapper");
@@ -154,5 +154,5 @@ export function createSidebarCard(
     appendCardToSidebar: () => {
       Sidebar.addCard(cardWrapper);
     },
-  };
+  } as const;
 }

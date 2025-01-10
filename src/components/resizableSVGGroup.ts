@@ -146,7 +146,7 @@ export function drawOutlinedArea({
   detectionCanvas.x1 = x1;
   detectionCanvas.y1 = y1;
 
-  const btn = Sidebar._sidebar.querySelector(
+  const btn = Sidebar.sidebar.querySelector(
     `.data-predict-id-${detectionCanvas.id}`
   )!;
   btn.textContent = "preview (old)";
