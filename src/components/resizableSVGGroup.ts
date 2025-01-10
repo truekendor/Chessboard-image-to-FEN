@@ -1,4 +1,4 @@
-import { DetectionCanvas } from "./detection-canvas";
+import { DetectionCanvas } from "./detectionCanvas";
 import { MainCanvas } from "../main";
 import { OutlineState } from "../outlineState";
 import { Sidebar } from "./sidebar";

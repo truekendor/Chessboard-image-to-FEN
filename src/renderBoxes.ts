@@ -1,6 +1,6 @@
 import { NN } from "./nnHelper";
 import { MainCanvas } from "./main";
-import { DetectionCanvas } from "./components/detection-canvas";
+import { DetectionCanvas } from "./components/detectionCanvas";
 import { createSidebarCard } from "./components/sidebarCard";
 import {
   createResizableSVGGroup,

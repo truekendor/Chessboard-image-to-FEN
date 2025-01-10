@@ -1,4 +1,4 @@
-import { DetectionCanvas } from "./detection-canvas";
+import { DetectionCanvas } from "./detectionCanvas";
 
 export class Sidebar {
   private static sidebar: HTMLDivElement =

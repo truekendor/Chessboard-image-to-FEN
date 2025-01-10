@@ -1,4 +1,4 @@
-import { DetectionCanvas } from "./detection-canvas";
+import { DetectionCanvas } from "./detectionCanvas";
 import { NN } from "../nnHelper";
 import { ChessBoardCanvas } from "./previewCanvas";
 import { detectionCanvasList } from "../renderBoxes";

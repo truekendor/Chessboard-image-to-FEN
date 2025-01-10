@@ -1,4 +1,4 @@
-import { DetectionCanvas } from "./components/detection-canvas";
+import { DetectionCanvas } from "./components/detectionCanvas";
 import { detectionsOutlineContainer } from "./renderBoxes";
 
 export class OutlineState {
