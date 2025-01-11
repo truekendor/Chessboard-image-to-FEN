@@ -28,14 +28,14 @@ export function createSidebarCard(
   const deleteCardBtn = document.createElement("button");
   deleteCardBtn.textContent = "delete";
 
-  const buttonsPanel = document.createElement("image");
+  const buttonsPanel = document.createElement("div");
   buttonsPanel.append(predictBtn, previewPredictionBtn, deleteCardBtn);
   buttonsPanel.classList.add("detection-card__btn-panel");
 
   predictBtn.addEventListener("click", () => {
     previewPredictionBtn.textContent = "preview";
 
-    const [f1, f2] = NN.classification.classifyCanvas(
+    const [f1, f2] = NN.classification.classifyCanvasTiles(
       detectionCanvas.toGrayScale().canvas
     );
 
@@ -86,7 +86,7 @@ export function createSidebarCard(
   // * ============
   // * fen
 
-  const fenContainer = document.createElement("image");
+  const fenContainer = document.createElement("div");
   fenContainer.classList.add("fen-container");
 
   const [whiteFENWrapper, setWhiteFENVal] = createSidebarOutputWrapper(
@@ -101,7 +101,7 @@ export function createSidebarCard(
   // todo delete
   fenContainer.append(whiteFENWrapper, blackFENWrapper);
 
-  const canvasWrapper = document.createElement("image");
+  const canvasWrapper = document.createElement("div");
   canvasWrapper.classList.add("detection-card__canvas-wrapper");
 
   const normFen = normalizeFenString(fenWhite).filter((el) => el !== "/");
@@ -149,7 +149,7 @@ function createSidebarOutputWrapper(text: string, fen: string) {
 
   const inputElem = document.createElement("input");
 
-  const inputWrapper = document.createElement("image");
+  const inputWrapper = document.createElement("div");
   inputWrapper.classList.add("input-wrapper");
 
   const copyFENBtn = document.createElement("button");

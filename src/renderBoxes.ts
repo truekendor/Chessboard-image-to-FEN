@@ -41,12 +41,9 @@ export function renderSVGBoxes(
       (boxes_data[i * 4 + 2] - boxes_data[i * 4]) /
       (boxes_data[i * 4 + 3] - boxes_data[i * 4 + 1]);
 
-    // if (score < 80) {
-    //   continue;
-    // }
+    const squareLikeAspectRatio = aspectRatio < 1.2 && aspectRatio > 0.8;
 
-    // todo
-    if (aspectRatio > 1.3 || aspectRatio < 0.7) {
+    if (!squareLikeAspectRatio) {
       continue;
     }
 
@@ -93,7 +90,7 @@ export function renderSVGBoxes(
 
   setTimeout(() => {
     detectionCanvasList.forEach((detectionCanvas) => {
-      const [regularFen, reversedFen] = NN.classification.classifyCanvas(
+      const [regularFen, reversedFen] = NN.classification.classifyCanvasTiles(
         detectionCanvas.canvas
       );
       createSidebarCard(

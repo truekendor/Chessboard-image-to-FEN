@@ -205,7 +205,7 @@ class ClassificationHelper {
     this.chessPiecesLookup
   ) as (keyof typeof this.chessPiecesLookup)[];
 
-  static classifyCanvas(canvas: HTMLCanvasElement) {
+  static classifyCanvasTiles(canvas: HTMLCanvasElement) {
     const tileCanvas = document.createElement("canvas");
     let regularFen = "";
     let reversedFen = "";
